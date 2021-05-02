@@ -9,5 +9,6 @@
     "**/dist": true,
     "**/*.log": true
   },
-  "typescript.preferences.importModuleSpecifier": "relative"
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "editor.formatOnSave": true
 }

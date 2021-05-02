@@ -1,7 +1,7 @@
 import Web3 from 'web3';
 import { crypto } from '@binance-chain/javascript-sdk';
 
-import type { AddressType } from '../types';
+import { AddressType } from '../types';
 
 const buildForEth = ({ privateKey }: { privateKey: string }) => {
   const web3 = new Web3(new Web3.providers.HttpProvider(''));

@@ -66,10 +66,7 @@ export type SendFundsReturnType = {
   amount: string;
   fee: string;
   feeNetworkSymbol: string;
-  send: (
-    tx?: string,
-    approval?: string
-  ) => Promise<{ transactionHash: string }>;
+  send: (tx?: string, approval?: string) => Promise<{ transactionHash: string }>;
   transaction?: Transaction | string | BcTranaction;
   approvalTransaction?: Transaction;
 };

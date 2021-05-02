@@ -19,9 +19,7 @@ export function generateNewAccountName(wallet: BcwWalletState) {
 }
 
 export async function buildId({ privateKey }: { privateKey: string }) {
-  return utils.sha3(
-    buildAddressFromKey({ privateKey, addressType: 'bbc-mainnet' })
-  );
+  return utils.sha3(buildAddressFromKey({ privateKey, addressType: 'bbc-mainnet' }));
 }
 
 export const getPrivateKeysFromMnemonic = ({
@@ -37,7 +35,6 @@ export const getPrivateKeysFromMnemonic = ({
 
   return {
     bbc: bCrypto.getPrivateKeyFromMnemonic(mnemonic, true, index),
-    eth: ethers.Wallet.fromMnemonic(mnemonic, DerivationPath.BSC + index)
-      .privateKey,
+    eth: ethers.Wallet.fromMnemonic(mnemonic, DerivationPath.BSC + index).privateKey,
   } as const;
 };

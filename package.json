@@ -1,44 +1,38 @@
 {
-  "version": "0.1.0",
+  "name": "bew.js",
+  "version": "0.0.1",
+  "description": "Key management for Binance Extension Wallet",
   "license": "MIT",
   "main": "dist/index.js",
+  "module": "dist/bew.js.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=10"
+  },
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build"
+    "lint": "tsdx lint src",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
   },
-  "peerDependencies": {},
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
-  "name": "bew.js",
+  "prettier": "@bna/prettier-config",
   "author": "zj",
-  "module": "dist/bew.js.esm.js",
   "devDependencies": {
-    "@babel/plugin-transform-async-to-generator": "^7.13.0",
-    "@babel/preset-env": "^7.13.15",
-    "@babel/preset-typescript": "^7.13.jj0",
-    "@types/jest": "^26.0.22",
-    "babel-eslint": "^10.1.0",
+    "@bna/commitlint-config": "^1.1.2-next.1",
+    "@bna/prettier-config": "^1.1.2-next.1",
+    "@size-limit/preset-small-lib": "^4.10.2",
+    "commitlint-cli": "^1.1.3",
     "dotenv": "^8.2.0",
-    "eslint": "^7.24.0",
-    "eslint-config-prettier": "^8.2.0",
-    "eslint-plugin-import": "^2.22.1",
-    "husky": "^6.0.0",
+    "husky": "4.3.8",
+    "size-limit": "^4.10.2",
     "tsdx": "^0.14.1",
     "tslib": "^2.2.0",
     "typescript": "^4.2.4"
@@ -48,7 +42,27 @@
     "bip39": "^3.0.3",
     "ethereumjs-tx": "^2.1.2",
     "ethers": "^5.1.0",
-    "prettier": "^2.2.1",
     "web3": "^1.3.5"
-  }
+  },
+  "commitlint": {
+    "extends": [
+      "@bna/commitlint-config"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "size-limit": [
+    {
+      "path": "dist/mylib.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/mylib.esm.js",
+      "limit": "10 KB"
+    }
+  ]
 }
