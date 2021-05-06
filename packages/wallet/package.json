@@ -20,7 +20,6 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
-    "prepare": "yarn build",
     "lint": "tsdx lint src"
   },
   "dependencies": {

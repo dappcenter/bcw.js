@@ -10,7 +10,8 @@
     "watch": "lerna run watch --parallel",
     "build": "lerna run build --stream",
     "test": "lerna run --stream test -- --color",
-    "lint": "lerna run lint --stream"
+    "lint": "lerna run lint --stream",
+    "postinstall": "yarn build"
   },
   "license": "MIT",
   "devDependencies": {
