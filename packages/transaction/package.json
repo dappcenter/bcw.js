@@ -1,6 +1,6 @@
 {
   "name": "@binancechain/transaction",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A typescript project template",
   "license": "MIT",
   "main": "dist/index.js",
