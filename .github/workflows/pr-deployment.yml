@@ -78,8 +78,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@binancechain'
 
-      - run: yarn install --frozen-lockfile
-      - run: yarn test --ci --coverage --maxWorkers=2
+      - run: yarn install --frozen-lockfile && yarn bootstrap
+      - run: yarn test --ci --coverage --maxWorkers=4
       - run: yarn build
 
       - name: Lerna publish
