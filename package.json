@@ -1,68 +1,34 @@
 {
-  "name": "bew.js",
+  "name": "bcw",
   "version": "0.0.1",
-  "description": "Key management for Binance Extension Wallet",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/bew.js.esm.js",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist"
+  "description": "A project for Binance chain wallet",
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "engines": {
-    "node": ">=10"
-  },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint src",
-    "size": "size-limit",
-    "analyze": "size-limit --why"
+    "watch": "lerna run watch --parallel",
+    "bootstrap": "yarn install && lerna link",
+    "build": "lerna run build --stream"
   },
-  "prettier": "@bna/prettier-config",
-  "author": "zj",
+  "license": "MIT",
   "devDependencies": {
-    "@bna/commitlint-config": "^1.1.2-next.1",
-    "@bna/prettier-config": "^1.1.2-next.1",
-    "@size-limit/preset-small-lib": "^4.10.2",
-    "commitlint-cli": "^1.1.3",
-    "dotenv": "^8.2.0",
+    "@binancechain/commitlint-config": "^0.0.4",
+    "@binancechain/prettier-config": "^0.0.4",
+    "@commitlint/cli": "^12.1.1",
+    "conventional-changelog": "^3.1.24",
     "husky": "4.3.8",
-    "size-limit": "^4.10.2",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.2.0",
-    "typescript": "^4.2.4"
+    "lerna": "^4.0.0"
   },
-  "dependencies": {
-    "@binance-chain/javascript-sdk": "^4.1.1",
-    "bip39": "^3.0.3",
-    "ethereumjs-tx": "^2.1.2",
-    "ethers": "^5.1.0",
-    "web3": "^1.3.5"
-  },
-  "commitlint": {
-    "extends": [
-      "@bna/commitlint-config"
-    ]
-  },
+  "prettier": "@binancechain/prettier-config",
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "size-limit": [
-    {
-      "path": "dist/mylib.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/mylib.esm.js",
-      "limit": "10 KB"
-    }
-  ]
+  "commitlint": {
+    "extends": [
+      "@binancechain/commitlint-config/lerna"
+    ]
+  }
 }
