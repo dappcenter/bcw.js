@@ -1,14 +1,8 @@
-import { createBcwWallet, generateLocalAccount } from '../src/wallet';
-import * as dotenv from 'dotenv';
-import * as path from 'path';
+import { createBcwWallet, generateLocalAccount } from '@binancechain/wallet';
 
-dotenv.config({
-  path: path.resolve(__dirname + '/.env'),
-});
-
-const memonic = process.env.menmonic || '';
-const generatedAddress = process.env.generatedAddress || '';
-const defaultBscAddress = process.env.defaultBscAddress || '';
+const memonic = 'ivory solution equal bonus bicycle genre toilet crouch room weasel ride rose';
+const defaultBscAddress = '0xFBC7c1f58DAb89a8eE702DB1CBB49363db42E497';
+const generatedAddress = '0x63E5D0da38AAd993fa6b486174373e5315038130';
 
 describe('bcw', () => {
   it('create wallet', async () => {

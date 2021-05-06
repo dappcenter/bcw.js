@@ -35,6 +35,8 @@ jobs:
       - name: Install packages
         run: yarn install --frozen-lockfile
 
+      - run: yarn test --ci --coverage --maxWorkers=2
+
       - run: yarn build
 
       - name: Generate changelog and version
