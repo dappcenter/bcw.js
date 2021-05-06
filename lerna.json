@@ -1,0 +1,20 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "useWorkspaces": true,
+  "version": "0.0.1",
+  "npmClient": "yarn",
+  "command": {
+    "run": {
+      "npmClient": "yarn"
+    },
+    "version": {
+      "message": "chore(release): publish %s",
+      "allowBranch": [
+        "master"
+      ],
+      "conventionalCommits": true
+    }
+  }
+}

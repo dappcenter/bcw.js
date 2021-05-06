@@ -1,0 +1,68 @@
+name: Create release pr
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+
+jobs:
+  build:
+    if: |
+      github.event.pull_request.merged == true && github.event.pull_request.head.ref != 'bot_release' && (github.event.pull_request.author_association == 'MEMBER' || github.event.pull_request.author_association == 'OWNER') && !startsWith(github.event.pull_request.title, 'chore(release):')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup git user
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@binancechain'
+
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install packages
+        run: yarn install --frozen-lockfile
+
+      - run: yarn build
+
+      - name: Generate changelog and version
+        id: changelog
+        run: |
+          yarn lerna version --no-push --no-git-tag-version -y
+          yarn conventional-changelog -l -p angular -k lerna.json -i CHANGELOG.tmp.log -s
+
+          version=$(node -pe 'JSON.parse(process.argv[1]).version' "$(cat lerna.json)")
+
+          changelog="$(cat CHANGELOG.tmp.log)"
+          changelog="${changelog//'%'/'%25'}"
+          changelog="${changelog//$'\n'/'%0A'}"
+          changelog="${changelog//$'\r'/'%0D'}"
+          echo "::set-output name=clean_changelog::$changelog"
+          echo "::set-output name=version::$version"
+
+      - name: Create release pr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          signoff: false
+          branch: bot_release
+          delete-branch: true
+          title: 'chore(release): publish v${{ steps.changelog.outputs.version }}'
+          commit-message: 'chore(release): publish v${{ steps.changelog.outputs.version }}'
+          body: |
+            ${{ steps.changelog.outputs.clean_changelog }}
+          labels: release
+          team-reviewers: |
+            owners
+            maintainers
