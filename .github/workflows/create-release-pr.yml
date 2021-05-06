@@ -37,8 +37,8 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
-      - run: yarn install --frozen-lockfile && yarn bootstrap
-      - run: yarn test --ci --coverage --maxWorkers=4
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint && yarn test --ci --coverage --maxWorkers=4
       - run: yarn build
 
       - name: Generate changelog and version

@@ -20,7 +20,8 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
-    "lint": "tsdx lint"
+    "prepare": "yarn build",
+    "lint": "tsdx lint src"
   },
   "dependencies": {
     "@binance-chain/javascript-sdk": "^4.1.1",

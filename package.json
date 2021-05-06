@@ -8,9 +8,9 @@
   ],
   "scripts": {
     "watch": "lerna run watch --parallel",
-    "bootstrap": "yarn install && lerna link",
     "build": "lerna run build --stream",
-    "test": "lerna run --stream test -- --color"
+    "test": "lerna run --stream test -- --color",
+    "lint": "lerna run lint --stream"
   },
   "license": "MIT",
   "devDependencies": {
