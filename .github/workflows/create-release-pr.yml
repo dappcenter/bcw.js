@@ -1,15 +1,20 @@
 name: Create release pr
 
+# on:
+#   pull_request:
+#     types: [closed]
+#     branches:
+#       - master
+
 on:
-  pull_request:
-    types: [closed]
+  push:
     branches:
       - master
 
 jobs:
   build:
     if: |
-      github.event.pull_request.merged == true && github.event.pull_request.head.ref != 'bot_release' && (github.event.pull_request.author_association == 'MEMBER' || github.event.pull_request.author_association == 'OWNER') && !startsWith(github.event.pull_request.title, 'chore(release):')
+      github.event.pull_request.head.ref != 'bot_release' && !startsWith(github.event.pull_request.title, 'chore(release):')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -36,7 +41,6 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - run: yarn test --ci --coverage --maxWorkers=2
-
       - run: yarn build
 
       - name: Generate changelog and version
