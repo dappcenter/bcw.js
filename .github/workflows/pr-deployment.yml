@@ -59,13 +59,7 @@ jobs:
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
 
-      - run: |
-          echo ${{ github.event.pull_request.head.ref }}
-          echo ${{ github.event.pull_request.head.sha }}
-          echo ${{ github.event.pull_request.head.repo.fork }}
-          echo ${{ github.event.pull_request_target.head.ref }}
-          echo ${{ github.event.pull_request_target.head.sha }}
-          echo ${{ github.event.pull_request_target.head.repo.full_name }}
+      - uses: hmarr/debug-action@v2
 
       - uses: actions/checkout@v2
         with:
