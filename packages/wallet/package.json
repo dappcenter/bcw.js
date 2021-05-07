@@ -1,7 +1,7 @@
 {
   "name": "@binancechain/wallet",
-  "version": "0.1.0",
-  "description": "A typescript project template",
+  "version": "0.0.1",
+  "description": "Key management for Binance Chain Wallet",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/wallet.esm.js",
@@ -17,7 +17,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsdx watch",
+    "watch": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint src"
