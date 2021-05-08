@@ -59,13 +59,22 @@ jobs:
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
 
-      - uses: hmarr/debug-action@v2
+      - name: Get pr branch
+        uses: octokit/request-action@v2.x
+        id: get_pr_branch
+        with:
+          route: GET /repos/{owner}/{repository}/pulls/{pull_number}
+          owner: ${{ context.repo.owner }}
+          repository: ${{ context.repo.repo }}
+          pull_number: ${{ context.issue.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          ref: ${{github.event.pull_request_target.head.ref}}
-          repository: ${{github.event.pull_request_target.head.repo.full_name}}
+          ref: ${{ fromJSON(steps.get_pr_branch.outputs.result).head.sha }}
+          repository: ${{ fromJSON(steps.get_pr_branch.outputs.result).head.repo.full_name }}
 
       - uses: actions/cache@v2
         with:
