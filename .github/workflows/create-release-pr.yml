@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     if: |
-      github.event.pull_request.head.ref != 'bot_release' && !startsWith(github.event.pull_request.title, 'chore(release):')
+      github.event.pull_request.merged == true && github.event.pull_request.head.ref != 'bot_release' && !startsWith(github.event.pull_request.title, 'chore(release):')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -58,6 +58,7 @@ jobs:
           branch: bot_release
           delete-branch: true
           title: 'chore(release): publish v${{ steps.changelog.outputs.version }}'
+          author: binance-chain-bot <noreply@github.com>
           committer: binance-chain-bot <noreply@github.com>
           commit-message: 'chore(release): publish v${{ steps.changelog.outputs.version }}'
           body: |
