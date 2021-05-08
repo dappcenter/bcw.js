@@ -32,9 +32,9 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn lerna bootstrap
       - run: yarn lint && yarn test --ci --coverage --maxWorkers=4
-      - run: yarn build
+      # - run: yarn build
 
       - name: Generate changelog and version
         id: changelog
@@ -42,7 +42,7 @@ jobs:
           yarn lerna version --no-push --no-git-tag-version -y
           yarn conventional-changelog -l -p angular -k lerna.json -i CHANGELOG.tmp.log -s
 
-          version=$(node -pe 'JSON.parse(process.argv[1]).version' "$(cat lerna.json)")
+          version=$(node -p 'require("./lerna.json").version')
 
           changelog="$(cat CHANGELOG.tmp.log)"
           changelog="${changelog//'%'/'%25'}"
@@ -58,6 +58,7 @@ jobs:
           branch: bot_release
           delete-branch: true
           title: 'chore(release): publish v${{ steps.changelog.outputs.version }}'
+          committer: binance-chain-bot <noreply@github.com>
           commit-message: 'chore(release): publish v${{ steps.changelog.outputs.version }}'
           body: |
             ${{ steps.changelog.outputs.clean_changelog }}

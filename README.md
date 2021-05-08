@@ -12,9 +12,10 @@ Comming soon...
 ## Contributing
 
 1. Fork repo and clone
-2. Submit PR with fork mode
-3. On your PR, submit a `/release` comment to release a beta version to test your package
-4. Once your PR is merged, the bot will automatically create a `release` PR, after the team member
+2. `yarn bootstrap`
+3. Submit PR with fork mode
+4. On your PR, submit a `/release` comment to release a beta version to test your package
+5. Once your PR is merged, the bot will automatically create a `release` PR, after the team member
    merges the PR, the publish process will be triggered automatically
 
 Tips:
