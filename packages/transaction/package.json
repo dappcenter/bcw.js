@@ -1,6 +1,6 @@
 {
   "name": "@binancechain/transaction",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A typescript project template",
   "license": "MIT",
   "main": "dist/index.js",
@@ -22,7 +22,5 @@
     "test": "tsdx test",
     "lint": "tsdx lint src"
   },
-  "dependencies": {},
-  "author": "robot-ux",
-  "devDependencies": {}
+  "author": "robot-ux"
 }
