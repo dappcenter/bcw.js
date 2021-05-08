@@ -17,11 +17,7 @@ jobs:
         with:
           node-version: 12
 
-      - uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - uses: bahmutov/npm-install@v1
 
-      - run: yarn lerna bootstrap
       - run: yarn lint
       - run: yarn test --ci --coverage --maxWorkers=4

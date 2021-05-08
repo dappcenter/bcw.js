@@ -18,8 +18,8 @@ jobs:
 
       - name: Setup git user
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --global user.name 'binance-chain-bot'
+          git config --global user.email 'binance-chain-bot@users.noreply.github.com'
 
       - uses: actions/setup-node@v2
         with:
@@ -27,13 +27,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@binancechain'
 
-      - uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - run: yarn lerna bootstrap
-      - run: yarn build
+      - uses: bahmutov/npm-install@v1
 
       - name: Generate changelog and version
         id: changelog
