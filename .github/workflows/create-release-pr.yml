@@ -33,8 +33,7 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
       - run: yarn lerna bootstrap
-      - run: yarn lint && yarn test --ci --coverage --maxWorkers=4
-      # - run: yarn build
+      - run: yarn build
 
       - name: Generate changelog and version
         id: changelog
@@ -58,8 +57,6 @@ jobs:
           branch: bot_release
           delete-branch: true
           title: 'chore(release): publish v${{ steps.changelog.outputs.version }}'
-          author: binance-chain-bot <noreply@github.com>
-          committer: binance-chain-bot <noreply@github.com>
           commit-message: 'chore(release): publish v${{ steps.changelog.outputs.version }}'
           body: |
             ${{ steps.changelog.outputs.clean_changelog }}

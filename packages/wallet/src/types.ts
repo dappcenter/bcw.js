@@ -6,20 +6,23 @@ export enum DerivationPath {
   BSC = `m/44'/60'/0'/0/`,
 }
 
-export const ACCOUNT_TYPES = ['local', 'ledger', 'imported'] as const;
-export type AccountType = typeof ACCOUNT_TYPES[number];
+export enum EACCOUNT_TYPES {
+  LOCAL = 'local',
+  LEDGER = 'ledger',
+  IMPORTED = 'imported',
+}
 
 export const WALLET_STATE_VERSIONS = ['v1'] as const;
 export type WalletStateVersion = typeof WALLET_STATE_VERSIONS[number];
 
 export type AccountAddress = {
   privateKey: string;
-  type: AddressType;
+  type: EADDRESS_TYPES;
   address: string;
 };
 
 interface AccountCommon {
-  type: AccountType;
+  type: EACCOUNT_TYPES;
   id: string;
   name: string;
   mnemonic: string | null;
@@ -29,7 +32,7 @@ interface AccountCommon {
 }
 
 export interface AccountLocal extends AccountCommon {
-  type: 'local' | 'imported';
+  type: EACCOUNT_TYPES.LOCAL | EACCOUNT_TYPES.IMPORTED;
   id: string;
   name: string;
   mnemonic: string | null;
@@ -39,7 +42,7 @@ export interface AccountLocal extends AccountCommon {
 }
 
 export interface AccountLedger extends AccountCommon {
-  type: 'ledger';
+  type: EACCOUNT_TYPES.LEDGER;
   id: string;
   name: string;
   mnemonic: null;
@@ -51,8 +54,11 @@ export interface AccountLedger extends AccountCommon {
 
 export type Account = AccountLocal | AccountLedger;
 
-export const ADDRESS_TYPES = ['bbc-mainnet', 'bbc-testnet', 'eth'] as const;
-export type AddressType = typeof ADDRESS_TYPES[number];
+export enum EADDRESS_TYPES {
+  BBC_MAINNET = 'bbc-mainnet',
+  BBC_TESTNET = 'bbc_testnet',
+  ETH = 'eth',
+}
 
 export type Location = { pathname: string; state?: any; timestamp: string }; // eslint-disable-line @typescript-eslint/no-explicit-any
 

@@ -1,6 +1,6 @@
 import * as bip39 from 'bip39';
 
-import { AccountAddress, AccountLocal } from '../types';
+import { AccountAddress, AccountLocal, EACCOUNT_TYPES, EADDRESS_TYPES } from '../types';
 import { BcwWalletState } from '../types';
 import { buildId, getPrivateKeysFromMnemonic } from './utils';
 import { buildAddressFromKey } from './buildAddressFromKey';
@@ -43,34 +43,34 @@ export const generateLocalAccount = async ({
   const keys = getPrivateKeysFromMnemonic({ mnemonic, index: accountIndex });
 
   const account: AccountLocal = {
-    type: 'local',
+    type: EACCOUNT_TYPES.LOCAL,
     name: accountName,
     id: await buildId({ privateKey: keys.bbc }),
     mnemonic,
     isDeprecated: false,
     addresses: [
       {
-        type: 'bbc-testnet',
+        type: EADDRESS_TYPES.BBC_TESTNET,
         privateKey: keys.bbc,
         address: buildAddressFromKey({
           privateKey: keys.bbc,
-          addressType: 'bbc-testnet',
+          addressType: EADDRESS_TYPES.BBC_TESTNET,
         }),
       },
       {
-        type: 'bbc-mainnet',
+        type: EADDRESS_TYPES.BBC_MAINNET,
         privateKey: keys.bbc,
         address: buildAddressFromKey({
           privateKey: keys.bbc,
-          addressType: 'bbc-mainnet',
+          addressType: EADDRESS_TYPES.BBC_MAINNET,
         }),
       },
       {
-        type: 'eth',
+        type: EADDRESS_TYPES.ETH,
         privateKey: keys.eth,
         address: buildAddressFromKey({
           privateKey: keys.eth,
-          addressType: 'eth',
+          addressType: EADDRESS_TYPES.ETH,
         }),
       },
     ],
@@ -92,24 +92,24 @@ export const generateImportedAccount = async ({
 
   const addresses: AccountAddress[] = [
     {
-      type: 'bbc-testnet',
+      type: EADDRESS_TYPES.BBC_TESTNET,
       privateKey,
-      address: buildAddressFromKey({ privateKey, addressType: 'bbc-testnet' }),
+      address: buildAddressFromKey({ privateKey, addressType: EADDRESS_TYPES.BBC_TESTNET }),
     },
     {
-      type: 'bbc-mainnet',
+      type: EADDRESS_TYPES.BBC_MAINNET,
       privateKey,
-      address: buildAddressFromKey({ privateKey, addressType: 'bbc-mainnet' }),
+      address: buildAddressFromKey({ privateKey, addressType: EADDRESS_TYPES.BBC_MAINNET }),
     },
     {
-      type: 'eth',
+      type: EADDRESS_TYPES.ETH,
       privateKey,
-      address: buildAddressFromKey({ privateKey, addressType: 'eth' }),
+      address: buildAddressFromKey({ privateKey, addressType: EADDRESS_TYPES.ETH }),
     },
   ];
 
   const importedAccount: AccountLocal = {
-    type: 'imported',
+    type: EACCOUNT_TYPES.IMPORTED,
     name: accountName,
     id: await buildId({
       privateKey,

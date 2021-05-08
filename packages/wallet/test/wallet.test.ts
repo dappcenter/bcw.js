@@ -10,7 +10,7 @@ describe('bcw', () => {
     expect(wallet.accounts[0].addresses.length).toEqual(3);
   });
 
-  it('recover wallet', async () => {
+  it('recover wallet from memonic', async () => {
     const wallet = await createBcwWallet({
       mnemonicLength: 128,
       mnemonic: memonic,

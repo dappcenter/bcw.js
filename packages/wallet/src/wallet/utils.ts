@@ -3,7 +3,7 @@ import * as bip39 from 'bip39';
 import { crypto as bCrypto } from '@binance-chain/javascript-sdk';
 import * as ethers from 'ethers';
 
-import { BcwWalletState, DerivationPath } from '../types';
+import { BcwWalletState, DerivationPath, EADDRESS_TYPES } from '../types';
 import { buildAddressFromKey } from './buildAddressFromKey';
 
 export function generateNewAccountName(wallet: BcwWalletState) {
@@ -19,7 +19,7 @@ export function generateNewAccountName(wallet: BcwWalletState) {
 }
 
 export async function buildId({ privateKey }: { privateKey: string }) {
-  return utils.sha3(buildAddressFromKey({ privateKey, addressType: 'bbc-mainnet' }));
+  return utils.sha3(buildAddressFromKey({ privateKey, addressType: EADDRESS_TYPES.BBC_MAINNET }));
 }
 
 export const getPrivateKeysFromMnemonic = ({

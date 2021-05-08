@@ -1,7 +1,7 @@
 import Web3 from 'web3';
 import { crypto } from '@binance-chain/javascript-sdk';
 
-import { AddressType } from '../types';
+import { EADDRESS_TYPES } from '../types';
 
 const buildForEth = ({ privateKey }: { privateKey: string }) => {
   const web3 = new Web3(new Web3.providers.HttpProvider(''));
@@ -14,11 +14,11 @@ const buildForBbc = ({
   addressType,
 }: {
   privateKey: string;
-  addressType: AddressType;
+  addressType: EADDRESS_TYPES;
 }) => {
   return crypto.getAddressFromPrivateKey(
     privateKey,
-    addressType === 'bbc-testnet' ? 'tbnb' : 'bnb',
+    addressType === EADDRESS_TYPES.BBC_TESTNET ? 'tbnb' : 'bnb',
   );
 };
 
@@ -27,8 +27,8 @@ export const buildAddressFromKey = ({
   addressType,
 }: {
   privateKey: string;
-  addressType: AddressType;
+  addressType: EADDRESS_TYPES;
 }): string => {
-  if (addressType !== 'eth') return buildForBbc({ privateKey, addressType });
+  if (addressType !== EADDRESS_TYPES.ETH) return buildForBbc({ privateKey, addressType });
   return buildForEth({ privateKey });
 };
