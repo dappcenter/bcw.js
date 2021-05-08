@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/binance-chain-npm/bcw.js/compare/v0.3.0...v0.3.1) (2021-05-08)
+
+
+### Bug Fixes
+
+* limit pr-deployment job only is triggered on PR Comment ([04225a4](https://github.com/binance-chain-npm/bcw.js/commit/04225a4b781c5f221ca447729d7a674e9d0c35b5))
+* yarn install cache ([#14](https://github.com/binance-chain-npm/bcw.js/issues/14)) ([0ad6f84](https://github.com/binance-chain-npm/bcw.js/commit/0ad6f8470f47cba182fedbb871bf74fe81e60e6a))
+
+
+
+
+
 # [0.3.0](https://github.com/binance-chain-npm/bcw.js/compare/v0.2.0...v0.3.0) (2021-05-08)
 
 
