@@ -64,9 +64,9 @@ jobs:
         id: get_pr_branch
         with:
           route: GET /repos/{owner}/{repository}/pulls/{pull_number}
-          owner: ${{ context.repo.owner }}
-          repository: ${{ context.repo.repo }}
-          pull_number: ${{ context.issue.number }}
+          owner: ${{ github.repository_owner }}
+          repository: ${{ github.repository }}
+          pull_number: ${{ github.event.issue.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
