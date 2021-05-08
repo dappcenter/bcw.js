@@ -6,6 +6,7 @@ on:
 
 jobs:
   get-comment:
+    if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
       - name: Execute a comment command
