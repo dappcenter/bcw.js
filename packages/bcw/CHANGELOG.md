@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/binance-chain-npm/bcw.js/compare/v0.3.1...v0.3.2) (2021-05-12)
+
+
+### Bug Fixes
+
+* Migrate packages to [@binance-chain](https://github.com/binance-chain) ([#17](https://github.com/binance-chain-npm/bcw.js/issues/17)) ([a861c75](https://github.com/binance-chain-npm/bcw.js/commit/a861c75af667311bc870bd01c4b0243529fb43f6))
+
+
+
+
+
 ## [0.3.1](https://github.com/binance-chain-npm/bcw.js/compare/v0.3.0...v0.3.1) (2021-05-08)
 
 **Note:** Version bump only for package @binancechain/bcw
