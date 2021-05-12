@@ -1,5 +1,5 @@
 {
-  "name": "@binancechain/wallet",
+  "name": "@binance-chain/wallet",
   "version": "0.3.1",
   "description": "Key management for Binance Chain Wallet",
   "license": "MIT",

@@ -1,5 +1,5 @@
 {
-  "name": "@binancechain/bcw",
+  "name": "@binance-chain/bcw",
   "version": "0.3.1",
   "description": "Utilities for binance chain wallet",
   "license": "MIT",
@@ -23,8 +23,8 @@
     "test": "tsdx test"
   },
   "dependencies": {
-    "@binancechain/transaction": "^0.3.1",
-    "@binancechain/wallet": "^0.3.1"
+    "@binance-chain/transaction": "^0.3.1",
+    "@binance-chain/wallet": "^0.3.1"
   },
   "author": "robot-ux"
 }

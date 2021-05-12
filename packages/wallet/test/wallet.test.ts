@@ -1,4 +1,4 @@
-import { createBcwWallet, generateLocalAccount } from '@binancechain/wallet';
+import { createBcwWallet, generateLocalAccount } from '@binance-chain/wallet';
 
 const memonic = 'ivory solution equal bonus bicycle genre toilet crouch room weasel ride rose';
 const defaultBscAddress = '0xFBC7c1f58DAb89a8eE702DB1CBB49363db42E497';

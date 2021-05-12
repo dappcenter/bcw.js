@@ -6,19 +6,18 @@ It includes the following core components:
 
 - [wallet](./packages/wallet): Key management for Binance Chain Wallet
 - [transaction](./packages/transaction): Some utils related to transactions
-
-Comming soon...
+- Comming soon...
 
 ## Installing
 
 ```sh
-yarn install @binancechain/bcw -S
+yarn install @binance-chain/bcw -S
 ```
 
 ## Usage
 
 ```ts
-import { wallet } from '@binancechain/bcw';
+import { wallet } from '@binance-chain/bcw';
 const res = await wallet.createBcwWallet({ mnemonicLength: 128 });
 ```
 

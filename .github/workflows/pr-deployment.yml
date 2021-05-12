@@ -70,7 +70,7 @@ jobs:
         with:
           node-version: 12
           registry-url: 'https://registry.npmjs.org'
-          scope: '@binancechain'
+          scope: '@binance-chain'
 
       - uses: bahmutov/npm-install@v1
 

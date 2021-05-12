@@ -1,4 +1,4 @@
-import { wallet } from '@binancechain/bcw';
+import { wallet } from '@binance-chain/bcw';
 
 it('create wallet', async () => {
   const res = await wallet.createBcwWallet({ mnemonicLength: 128 });

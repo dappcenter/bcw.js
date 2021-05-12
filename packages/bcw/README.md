@@ -3,12 +3,12 @@
 ## Installing
 
 ```sh
-yarn install @binancechain/bcw -S
+yarn install @binance-chain/bcw -S
 ```
 
 ## Usage
 
 ```ts
-import { wallet } from '@binancechain/bcw';
+import { wallet } from '@binance-chain/bcw';
 const res = await wallet.createBcwWallet({ mnemonicLength: 128 });
 ```

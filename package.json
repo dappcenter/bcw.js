@@ -15,8 +15,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@binancechain/commitlint-config": "^0.0.4",
-    "@binancechain/prettier-config": "^0.0.4",
+    "@binance-chain/commitlint-config": "^0.1.2",
+    "@binance-chain/prettier-config": "^0.1.2",
     "@commitlint/cli": "^12.1.1",
     "conventional-changelog-cli": "^2.1.1",
     "husky": "4.3.8",
@@ -32,7 +32,7 @@
     "ethers": "^5.1.0",
     "web3": "^1.3.5"
   },
-  "prettier": "@binancechain/prettier-config",
+  "prettier": "@binance-chain/prettier-config",
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
@@ -40,7 +40,7 @@
   },
   "commitlint": {
     "extends": [
-      "@binancechain/commitlint-config/lerna"
+      "@binance-chain/commitlint-config/lerna"
     ]
   }
 }

@@ -908,6 +908,17 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@binance-chain/commitlint-config@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.npmjs.org/@binance-chain/commitlint-config/-/commitlint-config-0.1.2.tgz#6868ade9f3d736a685579114b9db4caf070f7240"
+  integrity sha512-/mo8QZJ72INVACI8VEFOV8rW2bAMNeu0fkMHNMlzSrgrDzLqmLDYJzOzzlH85KkmmVaxyBei02GUHzRe7EIwoA==
+  dependencies:
+    "@commitlint/config-conventional" "^12.1.1"
+    globby "^11.0.3"
+    import-from "^3.0.0"
+    resolve-pkg "^2.0.0"
+    semver "^7.3.5"
+
 "@binance-chain/javascript-sdk@^4.1.1":
   version "4.1.1"
   resolved "https://registry.npmjs.org/@binance-chain/javascript-sdk/-/javascript-sdk-4.1.1.tgz#383f02fec435929d21e9e22f9cfc6e9761a09d79"
@@ -954,21 +965,10 @@
   optionalDependencies:
     "@ledgerhq/hw-transport-node-hid" "^5.10.0"
 
-"@binancechain/commitlint-config@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.npmjs.org/@binancechain/commitlint-config/-/commitlint-config-0.0.4.tgz#13adae8ce451f7aa7fc42e5fc12a2fd9d14f7a49"
-  integrity sha512-hXt2Zbb9kgGQDaYk+gOic3BhWms1sjvzb5gFYcBZtULBKhCaftUbnjkFvqT1BGO01VA2+2nFeKIQjFS7mi1ufA==
-  dependencies:
-    "@commitlint/config-conventional" "^12.1.1"
-    globby "^11.0.3"
-    import-from "^3.0.0"
-    resolve-pkg "^2.0.0"
-    semver "^7.3.5"
-
-"@binancechain/prettier-config@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.npmjs.org/@binancechain/prettier-config/-/prettier-config-0.0.4.tgz#4e4b5172bf71e61d8197398a40ba7b49af4de579"
-  integrity sha512-DuRcko4r0hSREQ19fLvtMaqG5RXYIogCIK0yuVzdVPx2QzCB/GyjeNvUVxfYTmOLMwc/2Wgb1kmeTRAcNJ05Bg==
+"@binance-chain/prettier-config@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.npmjs.org/@binance-chain/prettier-config/-/prettier-config-0.1.2.tgz#85c2359af5fb1d4cc5e8a67543a7ae91a074a7ae"
+  integrity sha512-lNA8xl0OzvrzCl12y9X2lNZCODTONz98rj1kXo0GyCA/KTY7Y9AGEe1QM31M/Sb+vNRt6LDPPDQL14u3gqB1NQ==
   dependencies:
     prettier-eslint-cli "^5.0.1"
 
