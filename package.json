@@ -28,8 +28,6 @@
   "dependencies": {
     "@binance-chain/javascript-sdk": "^4.1.1",
     "bip39": "^3.0.3",
-    "ethereumjs-tx": "^2.1.2",
-    "ethers": "^5.1.0",
     "web3": "^1.3.5"
   },
   "prettier": "@binance-chain/prettier-config",

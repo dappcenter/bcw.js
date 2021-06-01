@@ -1,6 +1,3 @@
-import { Transaction } from 'ethereumjs-tx';
-import { Transaction as BcTranaction } from '@binance-chain/javascript-sdk';
-
 export enum DerivationPath {
   BBC = `44'/714'/0'/0/`,
   BSC = `m/44'/60'/0'/0/`,
@@ -67,23 +64,6 @@ export interface BcwWalletState {
   accounts: Account[];
   location?: Location;
 }
-
-export type SendFundsReturnType = {
-  amount: string;
-  fee: string;
-  feeNetworkSymbol: string;
-  send: (tx?: string, approval?: string) => Promise<{ transactionHash: string }>;
-  transaction?: Transaction | string | BcTranaction;
-  approvalTransaction?: Transaction;
-};
-
-export type PrepareSendTransactionReturnType = {
-  nonce: string;
-  gasPrice: string;
-  estimateGas: string;
-  fee: string; // calculated human readable fee (estimatedGas * gasPrice)
-  method?: string; // the contract method resolved from data field, we only support resolving tokenHub&bep20 contract for now
-};
 
 export interface LedgerAccount {
   address: string;

@@ -22,5 +22,8 @@
     "test": "tsdx test",
     "lint": "tsdx lint src"
   },
-  "author": "robot-ux"
+  "author": "robot-ux",
+  "dependencies": {
+    "@ethersproject/wallet": "^5.2.0"
+  }
 }

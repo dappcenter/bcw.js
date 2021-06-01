@@ -1,7 +1,7 @@
 {
-  "name": "@binance-chain/transaction",
+  "name": "@binance-chain/tx",
   "version": "0.3.2",
-  "description": "A typescript project template",
+  "description": "A simple module for creating, manipulating and signing BSC/BC/ETH transactions",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/tx.esm.js",
@@ -22,5 +22,12 @@
     "test": "tsdx test",
     "lint": "tsdx lint src"
   },
-  "author": "robot-ux"
+  "author": "robot-ux",
+  "dependencies": {
+    "@ethereumjs/tx": "^3.1.4",
+    "human-standard-token-abi": "^2.0.0"
+  },
+  "jest": {
+    "testTimeout": 240000
+  }
 }

@@ -1,4 +1,4 @@
 import * as wallet from '@binance-chain/wallet';
-import * as transaction from '@binance-chain/transaction';
+import * as tx from '@binance-chain/tx';
 
-export { wallet, transaction };
+export { wallet, tx };

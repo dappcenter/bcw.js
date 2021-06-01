@@ -19,8 +19,9 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext",
+    "target": "ES2015",
     "baseUrl": ".",
+    "rootDir": ".",
   },
   "exclude": [
     "node_modules",

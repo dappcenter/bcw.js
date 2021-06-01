@@ -1,7 +1,7 @@
 import { utils } from '@binance-chain/javascript-sdk';
 import * as bip39 from 'bip39';
 import { crypto as bCrypto } from '@binance-chain/javascript-sdk';
-import * as ethers from 'ethers';
+import { Wallet as ethWallet } from '@ethersproject/wallet';
 
 import { BcwWalletState, DerivationPath, EADDRESS_TYPES } from '../types';
 import { buildAddressFromKey } from './buildAddressFromKey';
@@ -35,6 +35,6 @@ export const getPrivateKeysFromMnemonic = ({
 
   return {
     bbc: bCrypto.getPrivateKeyFromMnemonic(mnemonic, true, index),
-    eth: ethers.Wallet.fromMnemonic(mnemonic, DerivationPath.BSC + index).privateKey,
+    eth: ethWallet.fromMnemonic(mnemonic, DerivationPath.BSC + index).privateKey,
   } as const;
 };
