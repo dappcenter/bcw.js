@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/binance-chain-npm/bcw.js/compare/v0.3.2...v0.4.0) (2021-06-01)
+
+
+### Features
+
+* **tx:** Add signTransaction, from BSC to BSC ([#19](https://github.com/binance-chain-npm/bcw.js/issues/19)) ([959ab64](https://github.com/binance-chain-npm/bcw.js/commit/959ab64b7d5887bb39200f4a194cee2bfa02b1bf))
+
+
+
+
+
 ## [0.3.2](https://github.com/binance-chain-npm/bcw.js/compare/v0.3.1...v0.3.2) (2021-05-12)
 
 
