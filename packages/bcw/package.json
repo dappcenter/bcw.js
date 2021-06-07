@@ -23,7 +23,7 @@
     "test": "tsdx test"
   },
   "dependencies": {
-    "@binance-chain/transaction": "^0.3.2",
+    "@binance-chain/tx": "^0.4.0",
     "@binance-chain/wallet": "^0.4.0"
   },
   "author": "robot-ux"

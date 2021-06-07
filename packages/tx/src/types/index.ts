@@ -1,5 +1,5 @@
 import { TypedTransaction } from '@ethereumjs/tx';
-import { PromiEvent, TransactionReceipt } from 'web3-core';
+import { Transaction as BbcTransaction } from '@binance-chain/javascript-sdk';
 
 export type IChainType = 'bsc' | 'bbc' | 'eth';
 
@@ -11,8 +11,8 @@ export type INetwork = {
 };
 
 export type IAsset = {
-  networkSymbol?: string;
-  decimals?: number;
+  networkSymbol: string;
+  decimals: number;
   contractAddress?: string;
 };
 
@@ -24,14 +24,23 @@ export interface ITxData {
   gasLimit?: string;
   data?: string;
   nonce?: number;
-  privateKey: string;
   network: INetwork;
-  asset?: IAsset;
+  asset: IAsset;
 }
 
-export interface ITxReceipt {
-  tx: TypedTransaction;
-  fee: string;
+export interface IBbcTxData extends ITxData {
+  memo?: string;
+}
+
+export type ISign = {
   signedTx: string;
-  send: (tx: string) => PromiEvent<TransactionReceipt>;
+  signedApprovalTx?: string;
+};
+
+export interface ITxReceipt {
+  tx: TypedTransaction | BbcTransaction;
+  approvalTx?: TypedTransaction | BbcTransaction;
+  fee: string;
+  sign: (privateKey: string) => ISign;
+  send: (tx: ISign) => Promise<{ transactionHash: string }>;
 }

@@ -972,11 +972,6 @@
   dependencies:
     prettier-eslint-cli "^5.0.1"
 
-"@binance-chain/transaction@^0.3.2":
-  version "0.3.2"
-  resolved "https://registry.npmjs.org/@binance-chain/transaction/-/transaction-0.3.2.tgz#242590ea72b3079aa94362cc92f8d42efa0e478b"
-  integrity sha512-5l8WtKfKdU/S0xgYmPKpyEbN34+/lfvCSzuyvwBCY5+PU/YMkXFQ3vVLwBCqUCygPL9RyWwGlDuQY1j7evM3mA==
-
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.npmjs.org/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -3685,6 +3680,11 @@ bcrypt-pbkdf@^1.0.0:
   integrity sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
   dependencies:
     tweetnacl "^0.14.3"
+
+bech32-buffer@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.npmjs.org/bech32-buffer/-/bech32-buffer-0.1.3.tgz#62c9e4b59993bb9bed39a577b96a8be9da895b43"
+  integrity sha512-GcCwpM3gpkCyM+IgfiOYnsegrQl8i+MQiIbrQ1MudYFZAbisu0RSP3F3kcKqb29r5u24Sg+FWtvHtZGEPqQlgA==
 
 bech32@^1.1.3:
   version "1.1.4"
