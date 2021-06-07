@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/binance-chain-npm/bcw.js/compare/v0.4.0...v0.5.0) (2021-06-07)
+
+**Note:** Version bump only for package @binance-chain/wallet
+
+
+
+
+
 # [0.4.0](https://github.com/binance-chain-npm/bcw.js/compare/v0.3.2...v0.4.0) (2021-06-01)
 
 

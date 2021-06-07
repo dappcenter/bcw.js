@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/binance-chain-npm/bcw.js/compare/v0.4.0...v0.5.0) (2021-06-07)
+
+
+### Features
+
+* Finish send funds from BSC to BBC or on BBC ([#23](https://github.com/binance-chain-npm/bcw.js/issues/23)) ([3cd9bcb](https://github.com/binance-chain-npm/bcw.js/commit/3cd9bcb4899d02054935cb9cf4161aaca8fb4b12))
+
+
+
+
+
 # [0.4.0](https://github.com/binance-chain-npm/bcw.js/compare/v0.3.2...v0.4.0) (2021-06-01)
 
 
