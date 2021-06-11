@@ -26,5 +26,6 @@
     "@binance-chain/tx": "^0.5.0",
     "@binance-chain/wallet": "^0.5.0"
   },
-  "author": "robot-ux"
+  "author": "robot-ux",
+  "devDependencies": {}
 }

@@ -1,9 +1,9 @@
 import { BncClient, Transaction, types } from '@binance-chain/javascript-sdk';
 import Big from 'big.js';
-import { IBbcTxData, ITxReceipt } from 'src/types';
-
-import { BbcSdk, SOURCE_CODE, BASE_DECIMAIL } from './bbcSdk';
-import { ISign } from '../../types/index';
+import { IBbcTxData, ITxReceipt, ISign } from 'src/types';
+import { BBC_BASE_DECIMAIL, BBC_SOURCE_CODE } from 'src/constants';
+import { isBscAddress } from 'src/utils/address';
+import { BbcSdk } from './bbcSdk';
 
 const _getBbcMessage = (txData: IBbcTxData) => {
   const outputs: types.SignInputOutput[] = [
@@ -12,7 +12,7 @@ const _getBbcMessage = (txData: IBbcTxData) => {
       coins: [
         {
           denom: txData.asset?.networkSymbol as string,
-          amount: Number(new Big(txData.value).mul(BASE_DECIMAIL).toString()),
+          amount: Number(new Big(txData.value).mul(BBC_BASE_DECIMAIL).toString()),
         },
       ],
     },
@@ -36,15 +36,13 @@ const _getBbcToBscMessage = (txData: IBbcTxData) => {
   return transferOut;
 };
 
-const _isBscAddress = (to: string) => /^0x/.test(to);
-
 export const prepareForBbc = async (txData: IBbcTxData): Promise<ITxReceipt> => {
   const { network } = txData;
   const client = new BncClient(network.url);
   await client.initChain();
 
   const bbc = new BbcSdk({ network });
-  const isBsc = _isBscAddress(txData.to);
+  const isBsc = isBscAddress(txData.to);
   const message = isBsc ? _getBbcToBscMessage(txData) : _getBbcMessage(txData);
   const [fees, account, nodeInfo] = await Promise.all([
     bbc.getGasPrice(),
@@ -58,7 +56,7 @@ export const prepareForBbc = async (txData: IBbcTxData): Promise<ITxReceipt> => 
     sequence: account.sequence,
     baseMsg: message,
     memo: txData.memo ?? '',
-    source: SOURCE_CODE,
+    source: BBC_SOURCE_CODE,
   };
 
   const tx = new Transaction(txParams);

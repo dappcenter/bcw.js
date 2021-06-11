@@ -32,6 +32,13 @@ export interface IBbcTxData extends ITxData {
   memo?: string;
 }
 
+export interface IGasLimit {
+  to: string;
+  data?: string;
+  network: INetwork;
+  asset: IAsset;
+}
+
 export type ISign = {
   signedTx: string;
   signedApprovalTx?: string;

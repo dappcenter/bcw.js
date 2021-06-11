@@ -31,6 +31,14 @@
   "jest": {
     "setupFilesAfterEnv": [
       "../../jest/setup.js"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^src/(.*)": [
+        "<rootDir>/src/$1"
+      ]
+    }
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^4.1.0"
   }
 }

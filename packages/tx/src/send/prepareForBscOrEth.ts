@@ -5,10 +5,8 @@ import ert20TokenAbi from 'human-standard-token-abi';
 import { cloneDeep } from 'lodash';
 
 import { ISign, ITxData, ITxReceipt } from 'src/types';
-import { formatAmount } from '../utils';
-
-export const ESTIMATE_GAS_MULTIPLIER = 1.5;
-export const DEFAULT_GAS_LIMIT = 21000;
+import { formatAmount } from 'src/utils';
+import { ESTIMATE_GAS_MULTIPLIER, DEFAULT_GAS_LIMIT } from 'src/constants';
 
 type ISendTxOption = {
   isNativeToken?: boolean;

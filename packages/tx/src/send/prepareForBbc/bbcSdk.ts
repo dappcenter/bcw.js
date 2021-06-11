@@ -1,9 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
-import { INetwork } from 'src/types';
 import Big from 'big.js';
-
-export const BASE_DECIMAIL = 1e8;
-export const SOURCE_CODE = 18;
+import { INetwork } from 'src/types';
+import { BBC_BASE_DECIMAIL } from 'src/constants';
 
 export class BbcSdk {
   network: INetwork;
@@ -30,7 +28,7 @@ export class BbcSdk {
     });
 
     // bbc transfer
-    const bbcFee = new Big(fees?.fixed_fee_params?.fee ?? 0).div(BASE_DECIMAIL).toString();
+    const bbcFee = new Big(fees?.fixed_fee_params?.fee ?? 0).div(BBC_BASE_DECIMAIL).toString();
     const crossTransferFee = new Big(fees?.crossTransferOut?.fee ?? 0)
       .add(fees?.crossTransferOutRelayFee?.fee ?? 0)
       .toString();

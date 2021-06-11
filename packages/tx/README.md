@@ -37,3 +37,11 @@ const { sign, send } = await prepareToSendTx({
 });
 const result = await send(sign(PRIVATE_KEYS.bsc));
 ```
+
+### Get gas limit
+
+```jsx
+import { tx } from '@binance-chain/bcw';
+
+const gas = await tx.getGasLimit(BSC_BNB_DATA);
+```

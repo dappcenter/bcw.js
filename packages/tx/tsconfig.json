@@ -4,8 +4,13 @@
     "outDir": "dist",
     "noEmit": false,
     "declaration": true,
-    "rootDir": "src",
+    "rootDir": ".",
     "baseUrl": ".",
+    "paths": {
+      "src": [
+        "src/*"
+      ]
+    }
   },
   "include": [
     "../../types",

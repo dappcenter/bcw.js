@@ -2,6 +2,7 @@ import { ITxData } from 'src/types';
 import { prepareForBscOrEth } from './prepareForBscOrEth';
 import { prepareForBbc } from './prepareForBbc';
 import { prepareForBscToBbc } from './prepareForBscToBbc';
+import { isBbcAddress } from 'src/utils';
 
 export const prepareToSendTx = (txData: ITxData) => {
   const { network, to } = txData;
@@ -11,7 +12,7 @@ export const prepareToSendTx = (txData: ITxData) => {
     return prepareForBbc(txData);
   }
 
-  if (chainType === 'bsc' && /^t?bnb/.test(to)) {
+  if (chainType === 'bsc' && isBbcAddress(to)) {
     return prepareForBscToBbc(txData);
   }
 
