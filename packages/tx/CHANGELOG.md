@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/binance-chain-npm/bcw.js/compare/v0.5.0...v0.6.0) (2021-06-11)
+
+
+### Features
+
+* Add getGasLimit func ([#25](https://github.com/binance-chain-npm/bcw.js/issues/25)) ([8d986b4](https://github.com/binance-chain-npm/bcw.js/commit/8d986b420103a41af91d5304c94bd197cb8d55d3))
+
+
+
+
+
 # [0.5.0](https://github.com/binance-chain-npm/bcw.js/compare/v0.4.0...v0.5.0) (2021-06-07)
 
 

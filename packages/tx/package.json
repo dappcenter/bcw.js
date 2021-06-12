@@ -1,6 +1,6 @@
 {
   "name": "@binance-chain/tx",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A simple module for creating, manipulating and signing BSC/BC/ETH transactions",
   "license": "MIT",
   "main": "dist/index.js",
