@@ -1,6 +1,6 @@
 {
   "name": "@binance-chain/bcw",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Utilities for binance chain wallet",
   "license": "MIT",
   "main": "dist/index.js",
@@ -23,8 +23,8 @@
     "test": "tsdx test"
   },
   "dependencies": {
-    "@binance-chain/tx": "^0.6.0",
-    "@binance-chain/wallet": "^0.6.0"
+    "@binance-chain/tx": "^0.6.1",
+    "@binance-chain/wallet": "^0.6.1"
   },
   "author": "robot-ux"
 }

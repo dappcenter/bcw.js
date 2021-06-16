@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/binance-chain-npm/bcw.js/compare/v0.6.0...v0.6.1) (2021-06-16)
+
+
+### Bug Fixes
+
+* Wallet address type ([#27](https://github.com/binance-chain-npm/bcw.js/issues/27)) ([1020025](https://github.com/binance-chain-npm/bcw.js/commit/10200253b637627df8c2bb547103b573b9e7f45d))
+
+
+
+
+
 # [0.6.0](https://github.com/binance-chain-npm/bcw.js/compare/v0.5.0...v0.6.0) (2021-06-11)
 
 
