@@ -53,7 +53,7 @@ export type Account = AccountLocal | AccountLedger;
 
 export enum EADDRESS_TYPES {
   BBC_MAINNET = 'bbc-mainnet',
-  BBC_TESTNET = 'bbc_testnet',
+  BBC_TESTNET = 'bbc-testnet',
   ETH = 'eth',
 }
 

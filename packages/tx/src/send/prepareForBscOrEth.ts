@@ -68,6 +68,8 @@ const _prepareToSendTx = async (
   return {
     tx,
     fee: web3.utils.fromWei(tx.gasPrice.mul(tx.gasLimit)),
+    gasLimit: tx.gasLimit.toString(),
+    gasPrice: web3.utils.fromWei(tx.gasPrice),
     sign: (privateKey: string) => {
       const _privateKey = Buffer.from(privateKey, 'hex');
       const signedTx = tx.sign(_privateKey);

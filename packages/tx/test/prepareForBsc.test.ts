@@ -84,6 +84,7 @@ describe('prepareForBscToBbc', () => {
       value: '0.001',
       asset: BUSD_ASSET,
     });
+
     const result = await send(sign(BSC_ACCOUNT.privateKey));
 
     expect(result).toHaveProperty('transactionHash');

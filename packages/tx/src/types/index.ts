@@ -46,6 +46,8 @@ export type ISign = {
 
 export interface ITxReceipt {
   tx: TypedTransaction | BbcTransaction;
+  gasPrice?: string;
+  gasLimit?: string;
   approvalTx?: TypedTransaction | BbcTransaction;
   fee: string;
   sign: (privateKey: string) => ISign;
