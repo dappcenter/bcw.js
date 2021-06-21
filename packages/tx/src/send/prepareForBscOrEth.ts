@@ -34,7 +34,7 @@ const _prepareToSendTx = async (
   };
 
   // Transfer to non-nativeToken coins
-  if (!isNativeToken) {
+  if (!isNativeToken && !txData.data) {
     if (!asset?.contractAddress)
       throw new Error(`Asset "${asset?.networkSymbol} does not have a contract address"`);
 

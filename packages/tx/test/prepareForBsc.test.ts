@@ -99,7 +99,7 @@ describe('prepareForBscToBbc', () => {
         value: '0.001',
         asset: BNB_ASSET,
         gasPrice: '15',
-        gasLimit: '42000',
+        gasLimit: '120000',
       });
       const result = await send(sign(BSC_ACCOUNT.privateKey));
 
