@@ -31,6 +31,7 @@ export class BbcSdk {
     const bbcFee = new Big(fees?.fixed_fee_params?.fee ?? 0).div(BBC_BASE_DECIMAIL).toString();
     const crossTransferFee = new Big(fees?.crossTransferOut?.fee ?? 0)
       .add(fees?.crossTransferOutRelayFee?.fee ?? 0)
+      .div(BBC_BASE_DECIMAIL)
       .toString();
 
     return { bbcFee, crossTransferFee };
