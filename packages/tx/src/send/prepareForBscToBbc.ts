@@ -9,6 +9,7 @@ import { formatAmount } from '../utils';
 import { prepareForBscOrEth } from './prepareForBscOrEth';
 import { TypedTransaction } from '@ethereumjs/tx';
 import { ISign } from '../types/index';
+import { BSC_TO_BBC_GAS_LIMIT } from '../constants/index';
 
 const _buildApprovalTx = async (txData: ITxData) => {
   const { network, asset, value: amount } = txData;
@@ -37,7 +38,7 @@ const _buildApprovalTx = async (txData: ITxData) => {
       value: '0',
       data: allowanceABI,
     });
-    return new Big(web3.utils.fromWei(parseInt(result, 16).toString())).toString();
+    return new Big(web3.utils.fromWei(web3.utils.hexToNumberString(result))).toString();
   })();
 
   if (new Big(allowance).gte(amount)) {
@@ -66,8 +67,8 @@ export const prepareForBscToBbc = async (txData: ITxData): Promise<ITxReceipt> =
 
   const tokenHubContract = new web3.eth.Contract(tokenHubAbi, tokenHubContractAddress);
   const relayFeeWei = await tokenHubContract.methods.getMiniRelayFee().call();
-
   const approvalTx = await _buildApprovalTx(txData);
+
   const amountWei = formatAmount(txData.value, asset.decimals);
   const expireTime = (() => {
     const d = new Date(Date.now());
@@ -87,6 +88,7 @@ export const prepareForBscToBbc = async (txData: ITxData): Promise<ITxReceipt> =
       .encodeABI(),
     to: tokenHubContractAddress,
     value,
+    gasLimit: approvalTx ? BSC_TO_BBC_GAS_LIMIT.toString() : undefined,
   });
 
   const fee = new Big(transferOutTx.fee)
@@ -96,6 +98,10 @@ export const prepareForBscToBbc = async (txData: ITxData): Promise<ITxReceipt> =
 
   return {
     fee,
+    gasLimit: transferOutTx.gasLimit,
+    gasPrice: new Big(fee)
+      .div((transferOutTx.tx as TypedTransaction).gasLimit.toString())
+      .toFixed(),
     approvalTx: approvalTx?.tx,
     tx: transferOutTx.tx,
     sign: (privateKey: string) => {

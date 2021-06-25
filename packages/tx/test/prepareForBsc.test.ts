@@ -85,6 +85,7 @@ describe('prepareForBscToBbc', () => {
       asset: BUSD_ASSET,
     });
 
+    // console.log(sign, send, gasLimit, gasPrice, fee);
     const result = await send(sign(BSC_ACCOUNT.privateKey));
 
     expect(result).toHaveProperty('transactionHash');
