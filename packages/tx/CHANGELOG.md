@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.3](https://github.com/binance-chain-npm/bcw.js/compare/v0.6.2...v0.6.3) (2021-06-25)
+
+
+### Bug Fixes
+
+* Add prepare return paramas(gasPrice, gasLimit) ([#33](https://github.com/binance-chain-npm/bcw.js/issues/33)) ([7b36674](https://github.com/binance-chain-npm/bcw.js/commit/7b36674e564ce3317f49e39a8a41bf56a2118053))
+* BBC to BSC gas fee ([#31](https://github.com/binance-chain-npm/bcw.js/issues/31)) ([9164126](https://github.com/binance-chain-npm/bcw.js/commit/9164126e3159a02f8e197c28215a6a2edb1e0b45))
+
+
+
+
+
 ## [0.6.2](https://github.com/binance-chain-npm/bcw.js/compare/v0.6.1...v0.6.2) (2021-06-21)
 
 
