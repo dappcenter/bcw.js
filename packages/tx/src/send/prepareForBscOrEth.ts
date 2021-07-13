@@ -24,7 +24,7 @@ const _prepareToSendTx = async (
     : await web3.eth.getGasPrice();
 
   const txParam = {
-    from: txData.from,
+    from,
     to: txData.to,
     gasPrice: web3.utils.toHex(gasPrice),
     value: web3.utils.toHex(value),

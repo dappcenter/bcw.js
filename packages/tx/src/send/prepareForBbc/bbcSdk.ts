@@ -3,6 +3,8 @@ import Big from 'big.js';
 import { INetwork } from 'src/types';
 import { BBC_BASE_DECIMAIL } from 'src/constants';
 
+const divideBase = (n: Big) => n.div(BBC_BASE_DECIMAIL).toString();
+
 export class BbcSdk {
   network: INetwork;
   http: AxiosInstance;
@@ -22,19 +24,24 @@ export class BbcSdk {
     res.forEach((item) => {
       if (item.fixed_fee_params) {
         fees[item.fixed_fee_params] = item.fixed_fee_params;
-      } else if (['crossTransferOut', 'crossTransferOutRelayFee'].includes(item.msg_type)) {
+      } else {
         fees[item.msg_type] = item;
       }
     });
 
     // bbc transfer
-    const bbcFee = new Big(fees?.fixed_fee_params?.fee ?? 0).div(BBC_BASE_DECIMAIL).toString();
-    const crossTransferFee = new Big(fees?.crossTransferOut?.fee ?? 0)
-      .add(fees?.crossTransferOutRelayFee?.fee ?? 0)
-      .div(BBC_BASE_DECIMAIL)
-      .toString();
+    const transfer = divideBase(new Big(fees?.fixed_fee_params?.fee ?? 0));
+    const transferToBsc = divideBase(
+      new Big(fees?.crossTransferOut?.fee ?? 0).add(fees?.crossTransferOutRelayFee?.fee ?? 0),
+    );
 
-    return { bbcFee, crossTransferFee };
+    return {
+      transfer,
+      transferToBsc,
+      delegate: divideBase(new Big(fees?.side_delegate?.fee ?? 0)),
+      undelegate: divideBase(new Big(fees?.side_undelegate?.fee ?? 0)),
+      redelegate: divideBase(new Big(fees?.side_redelegate?.fee ?? 0)),
+    };
   };
 
   getAccount = async (address: string) => {

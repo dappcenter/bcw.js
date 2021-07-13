@@ -1,10 +1,32 @@
 import { TypedTransaction } from '@ethereumjs/tx';
-import { Transaction as BbcTransaction } from '@binance-chain/javascript-sdk';
+import { Transaction as BbcTransaction, types } from '@binance-chain/javascript-sdk';
 
 export type IChainType = 'bsc' | 'bbc' | 'eth';
+export const NETWORK_IDS = [
+  'bbc-mainnet',
+  'bsc-mainnet',
+  'eth-mainnet',
+  'bbc-testnet',
+  'bsc-testnet',
+  'ropsten-testnet',
+] as const;
+
+export type INetworkId = typeof NETWORK_IDS[number];
+export const CHAIN_IDS = [
+  'bsc',
+  'chapel',
+  'Binance-Chain-Tigris',
+  'Binance-Chain-Ganges',
+  '1',
+  '3',
+] as const;
+
+export type IChainId = typeof CHAIN_IDS[number];
 
 export type INetwork = {
   url: string;
+  id?: INetworkId;
+  chainId?: IChainId;
   chainType: IChainType;
   baseChain?: string;
   hardfork?: string;
@@ -25,11 +47,13 @@ export interface ITxData {
   data?: string;
   nonce?: number;
   network: INetwork;
-  asset: IAsset;
+  asset?: IAsset;
 }
 
 export interface IBbcTxData extends ITxData {
   memo?: string;
+  message?: types.BaseMsg;
+  fee?: string;
 }
 
 export interface IGasLimit {

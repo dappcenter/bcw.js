@@ -16,8 +16,8 @@ export const BSC_ACCOUNT = {
   privateKey: '0eb0f7ef45b9e7870b452fd66d20438493a9b439f98ca49ae9519a3b34dda066',
 };
 export const BBC_ACCOUNT = {
-  address: 'tbnb1sndxdzsg42jg8lc0hehx8dzzpyfxrvq937mt0w',
-  privateKey: 'd2924a28df49b148e0dfbd1e5558913507e07c9a289c292cc50cea7f6b5f68fc',
+  address: 'tbnb1zzt7zg7j40cq0yy4ef2dx3nsns8csp4pgc4vd5',
+  privateKey: 'df3256c2f00ee8578a2633f3d8341c3e41b8ab4387ebe7b2589635ef91492cb1',
 };
 
 // assets

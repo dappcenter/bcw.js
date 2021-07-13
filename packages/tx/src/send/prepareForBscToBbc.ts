@@ -15,13 +15,13 @@ const _buildApprovalTx = async (txData: ITxData) => {
   const { network, asset, value: amount } = txData;
   const contractAddress = asset?.contractAddress as string;
 
-  if (asset.networkSymbol === 'BNB') {
+  if (asset?.networkSymbol === 'BNB') {
     console.debug('No need for any approval for BNB');
     return;
   }
 
   if (!contractAddress) {
-    throw new Error(`Asset "${asset.networkSymbol} does not have a contract address"`);
+    throw new Error(`Asset "${asset?.networkSymbol} does not have a contract address"`);
   }
 
   const web3 = new Web3(new Web3.providers.HttpProvider(network.url));
@@ -49,7 +49,7 @@ const _buildApprovalTx = async (txData: ITxData) => {
   if (__DEV__)
     console.debug({ allowance, amount }, 'Amount is not within allowance. Approval is needed.');
 
-  const maxAmount = web3.utils.toHex(formatAmount(new Big(amount).mul(10 ** 2), asset.decimals));
+  const maxAmount = web3.utils.toHex(formatAmount(new Big(amount).mul(10 ** 2), asset?.decimals));
   const approvedABI = bep20Contract.methods.approve(tokenHubContractAddress, maxAmount).encodeABI();
 
   return prepareForBscOrEth({
@@ -69,7 +69,7 @@ export const prepareForBscToBbc = async (txData: ITxData): Promise<ITxReceipt> =
   const relayFeeWei = await tokenHubContract.methods.getMiniRelayFee().call();
   const approvalTx = await _buildApprovalTx(txData);
 
-  const amountWei = formatAmount(txData.value, asset.decimals);
+  const amountWei = formatAmount(txData.value, asset?.decimals);
   const expireTime = (() => {
     const d = new Date(Date.now());
     d.setMinutes(d.getMinutes() + 60);
@@ -77,14 +77,14 @@ export const prepareForBscToBbc = async (txData: ITxData): Promise<ITxReceipt> =
   })();
 
   const value = web3.utils.fromWei(
-    new Big(relayFeeWei).add(asset.networkSymbol === 'BNB' ? amountWei : 0).toString(),
+    new Big(relayFeeWei).add(asset?.networkSymbol === 'BNB' ? amountWei : 0).toString(),
   );
   const nonce = approvalTx ? (approvalTx?.tx as TypedTransaction).nonce.toNumber() + 1 : 0;
   const transferOutTx = await prepareForBscOrEth({
     ...txData,
     nonce,
     data: tokenHubContract.methods
-      .transferOut(asset.contractAddress, decodeTo, web3.utils.toHex(amountWei), expireTime)
+      .transferOut(asset?.contractAddress, decodeTo, web3.utils.toHex(amountWei), expireTime)
       .encodeABI(),
     to: tokenHubContractAddress,
     value,

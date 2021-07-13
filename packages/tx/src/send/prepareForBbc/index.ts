@@ -4,6 +4,7 @@ import { IBbcTxData, ITxReceipt, ISign } from 'src/types';
 import { BBC_BASE_DECIMAIL, BBC_SOURCE_CODE } from 'src/constants';
 import { isBscAddress } from 'src/utils/address';
 import { BbcSdk } from './bbcSdk';
+import { INetwork } from '../../types/index';
 
 const _getBbcMessage = (txData: IBbcTxData) => {
   const outputs: types.SignInputOutput[] = [
@@ -36,34 +37,51 @@ const _getBbcToBscMessage = (txData: IBbcTxData) => {
   return transferOut;
 };
 
-export const prepareForBbc = async (txData: IBbcTxData): Promise<ITxReceipt> => {
-  const { network } = txData;
-  const client = new BncClient(network.url);
-  await client.initChain();
-
+const _buildTx = async ({
+  message,
+  from,
+  network,
+  memo,
+}: {
+  message: types.BaseMsg;
+  from: string;
+  network: INetwork;
+  memo?: string;
+}) => {
   const bbc = new BbcSdk({ network });
-  const isBsc = isBscAddress(txData.to);
-  const message = isBsc ? _getBbcToBscMessage(txData) : _getBbcMessage(txData);
-  const [fees, account, nodeInfo] = await Promise.all([
-    bbc.getGasPrice(),
-    bbc.getAccount(txData.from),
-    bbc.getNodeInfo(),
-  ]);
-
+  const [account, nodeInfo] = await Promise.all([bbc.getAccount(from), bbc.getNodeInfo()]);
   const txParams = {
     chainId: nodeInfo.node_info.network,
     accountNumber: account.account_number,
     sequence: account.sequence,
     baseMsg: message,
-    memo: txData.memo ?? '',
+    memo: memo ?? '',
     source: BBC_SOURCE_CODE,
   };
 
-  const tx = new Transaction(txParams);
+  if (__DEV__) console.log('txParams: ', txParams);
+  return new Transaction(txParams);
+};
+
+export const prepareForBbc = async (txData: IBbcTxData): Promise<ITxReceipt> => {
+  const { network } = txData;
+  const client = new BncClient(network.url);
+  await client.initChain();
+
+  const isBsc = isBscAddress(txData.to);
+  const message = txData.message || (isBsc ? _getBbcToBscMessage(txData) : _getBbcMessage(txData));
+  const tx = await _buildTx({ message, from: txData.from, network });
+
+  const fee = await (async () => {
+    if (txData.fee) return txData.fee;
+    const bbc = new BbcSdk({ network });
+    const fees = await bbc.getGasPrice();
+    return isBsc ? fees.transferToBsc : fees.transfer;
+  })();
 
   return {
     tx,
-    fee: isBsc ? fees.crossTransferFee : fees.bbcFee,
+    fee,
     sign: (privateKey: string) => {
       return {
         signedTx: tx.sign(privateKey).serialize(),
