@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/binance-chain-npm/bcw.js/compare/v0.6.3...v0.7.0) (2021-07-13)
+
+
+### Features
+
+* finish delegate and transfer functions ([#35](https://github.com/binance-chain-npm/bcw.js/issues/35)) ([73a38a9](https://github.com/binance-chain-npm/bcw.js/commit/73a38a9ec381405463074c4e0f74c44d431f4702))
+
+
+
+
+
 ## [0.6.3](https://github.com/binance-chain-npm/bcw.js/compare/v0.6.2...v0.6.3) (2021-06-25)
 
 
